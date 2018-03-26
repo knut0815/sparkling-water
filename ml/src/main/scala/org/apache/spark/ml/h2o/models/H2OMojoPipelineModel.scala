@@ -20,6 +20,7 @@ class H2OMojoPipelineModel(val mojoData: Array[Byte], override val uid: String)
   extends SparkModel[H2OMojoPipelineModel] with MLWritable {
 
   @transient private var model: MojoModel2 = _
+
   def getOrCreateModel() = {
     if (model == null) {
       val reader = Mojo2ReaderBackendFactory.createReaderBackend(new ByteArrayInputStream(mojoData))
@@ -35,32 +36,22 @@ class H2OMojoPipelineModel(val mojoData: Array[Byte], override val uid: String)
   case class Mojo2Prediction(arr: Array[String])
 
   private val modelUdf = (names: Array[String]) => udf[Mojo2Prediction, Row] {
-        r: Row =>
-          val m = getOrCreateModel()
-          val inputFrame = m.getInputFrame
+    r: Row =>
+      val m = getOrCreateModel()
+      val inputFrame = m.getInputFrame
 
-          val data = Array(r.getValuesMap[Any](names).values.toArray.map(_.toString))
-          inputFrame.fillFromCsvData(r.getValuesMap[Any](names).keys.toArray, data)
-          m.transform()
-          val output = getOrCreateModel().getOutputFrame.getNames.zipWithIndex.map { case(_, i) =>
-          m.getOutputFrame.getColumnData(i).toString
-        }
-          // get the output data
-          Mojo2Prediction(output)
-    }
+      val data = Array(r.getValuesMap[Any](names).values.toArray.map(_.toString))
+      inputFrame.fillFromCsvData(r.getValuesMap[Any](names).keys.toArray, data)
+      m.transform()
+      val output = getOrCreateModel().getOutputFrame.getNames.zipWithIndex.map { case (_, i) =>
+        m.getOutputFrame.getColumnData(i).toString
+      }
+      // get the output data
+      Mojo2Prediction(output)
+  }
 
   def defaultFileName: String = H2OMojoPipelineModel.defaultFileName
 
-/*  def predictPerPartition(frame: DataFrame): DataFrame = {
-    frame.mapPartitions{ iterator =>
-      val input = iterator.toArray.map(r => r.getValuesMap(frame.columns).values.toArray.map(_.toString))
-      val inputFrame = model.getInputFrame
-      inputFrame.fillFromCsvData(frame.columns, input)
-      model.transform()
-      iterator.next() ++ model.transform()
-      iterator
-    }
-  }*/
   override def copy(extra: ParamMap): H2OMojoPipelineModel = defaultCopy(extra)
 
   override def write: MLWriter = new H2OMOJOPipelineModelWriter(this)
