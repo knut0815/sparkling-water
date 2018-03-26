@@ -44,7 +44,11 @@ class H2OMojoPipelineModel(val mojoData: Array[Byte], override val uid: String)
       inputFrame.fillFromCsvData(r.getValuesMap[Any](names).keys.toArray, data)
       m.transform()
       val output = getOrCreateModel().getOutputFrame.getNames.zipWithIndex.map { case (_, i) =>
-        m.getOutputFrame.getColumnData(i).toString
+        val predictedRows = m.getOutputFrame.getColumnData(i).asInstanceOf[Array[_]]
+        if (predictedRows.length != 1) {
+          throw new RuntimeException("Invalid state, we predict on each row by row, independently at this moment.")
+        }
+        predictedRows(0).toString
       }
       // get the output data
       Mojo2Prediction(output)
