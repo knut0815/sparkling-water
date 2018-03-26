@@ -32,15 +32,20 @@ class H2OMojoPipelineModelTest extends FunSuite with SparkTestContext {
   }
 
   test("Prediction on Mojo Pipeline (Mojo2)") {
+    // Test data
+    val df = spark.read.option("header", "true").csv("examples/smalldata/prostate/prostate.csv")
+    // Test mojo
     val mojo = H2OMojoPipelineModel.createFromMojo(
       this.getClass.getClassLoader.getResourceAsStream("mojo2data/mojo.mojo"),
       "prostate_pipeline.mojo")
-    println(mojo.getOrCreateModel().getInputFrame.getNames.mkString(" "))
-    println(mojo.getOrCreateModel().getInputFrame.getTypes.mkString(" "))
+    
+    val icolNames = mojo.getOrCreateModel().getInputFrame.getNames
+    val icolTypes = mojo.getOrCreateModel().getInputFrame.getTypes
+    println("MOJO Inputs")
+    println(icolNames.zip(icolTypes).map { case (n,t) => s"${n}[${t}]" }.mkString(", "))
 
-    val df = spark.read.option("header", "true").csv("/Users/kuba/devel/repos/sparkling-water/examples/smalldata/prostate/prostate.csv")
-    val predictions = mojo.transform(df)
-    println(predictions.columns.mkString(" "))
-    println(predictions.select("prediction.preds").first().getList(0))
+    val transDf = mojo.transform(df)
+    println(s"Spark Transformer Output:\n${transDf.dtypes.map { case (n,t) => s"${n}[${t}]" }.mkString(" ")}")
+    println(transDf.select("prediction.preds").first().getList(0))
   }
 }
