@@ -33,9 +33,9 @@ class H2OMojoPipelineModel(val mojoData: Array[Byte], override val uid: String)
 
   val outputCol = "prediction"
 
-  case class Mojo2Prediction(arr: Array[String])
-
-  private val modelUdf = (names: Array[String]) => udf[Mojo2Prediction, Row] {
+  case class Mojo2Prediction(preds: List[String])
+  private val modelUdf = (names: Array[String]) =>
+    udf[Mojo2Prediction, Row] {
     r: Row =>
       val m = getOrCreateModel()
       val inputFrame = m.getInputFrame
@@ -50,8 +50,8 @@ class H2OMojoPipelineModel(val mojoData: Array[Byte], override val uid: String)
         }
         predictedRows(0).toString
       }
-      // get the output data
-      Mojo2Prediction(output)
+
+      Mojo2Prediction(output.toList)
   }
 
   def defaultFileName: String = H2OMojoPipelineModel.defaultFileName
