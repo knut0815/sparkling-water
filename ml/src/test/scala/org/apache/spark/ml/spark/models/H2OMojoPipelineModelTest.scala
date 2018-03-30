@@ -23,6 +23,8 @@ import org.apache.spark.ml.h2o.models.H2OMojoPipelineModel
 import org.junit.runner.RunWith
 import org.scalatest.FunSuite
 import org.scalatest.junit.JUnitRunner
+
+import scala.collection.mutable
 @RunWith(classOf[JUnitRunner])
 class H2OMojoPipelineModelTest extends FunSuite with SparkTestContext {
 
@@ -38,14 +40,20 @@ class H2OMojoPipelineModelTest extends FunSuite with SparkTestContext {
     val mojo = H2OMojoPipelineModel.createFromMojo(
       this.getClass.getClassLoader.getResourceAsStream("mojo2data/mojo.mojo"),
       "prostate_pipeline.mojo")
-    
-    val icolNames = mojo.getOrCreateModel().getInputFrame.getNames
-    val icolTypes = mojo.getOrCreateModel().getInputFrame.getTypes
-    println("MOJO Inputs")
+    val rawMojo = mojo.getOrCreateModel()
+    val icolNames = rawMojo.getInputFrame.getNames
+    val icolTypes = rawMojo.getInputFrame.getTypes
+    val ocolNames = rawMojo.getOutputFrame.getNames
+    val ocolTypes = rawMojo.getOutputFrame.getTypes
+    println("\nMOJO Inputs:")
     println(icolNames.zip(icolTypes).map { case (n,t) => s"${n}[${t}]" }.mkString(", "))
+    println("\nMOJO Outputs:")
+    println(ocolNames.zip(ocolTypes).map { case (n,t) => s"${n}[${t}]" }.mkString(", "))
+
 
     val transDf = mojo.transform(df)
-    println(s"Spark Transformer Output:\n${transDf.dtypes.map { case (n,t) => s"${n}[${t}]" }.mkString(" ")}")
-    println(transDf.select("prediction.preds").first().getList(0))
+    println(s"\n\nSpark Transformer Output:\n${transDf.dtypes.map { case (n,t) => s"${n}[${t}]" }.mkString(" ")}")
+    println("Predictions:")
+    println(transDf.select("prediction.preds").take(5).mkString("\n"))
   }
 }
