@@ -1,0 +1,78 @@
+mojo_version = 2.0
+uuid = '4e374220-4fc8-4346-b71f-01542bc76d4d'
+time_created = 2018-04-03T12:20:27.160398
+
+[columns]
+features = [
+  ['0_CVTE:CAPSULE.4', 'float64'],
+  ['1_CVTE:DCAPS.4', 'float64'],
+  ['2_CVTE:DPROS.4', 'float64'],
+  ['3_CVTE:GLEASON.4', 'float64'],
+  ['4_CVTE:RACE.4', 'float64'],
+  ['PSA', 'float64'],
+  ['RACE', 'int32'],
+  ['VOL', 'float64'],
+  ['8_CVTE:DCAPS.4', 'float64'],
+  ['9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.4', 'int32'],
+  ['9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.4', 'float64'],
+  ['9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.4', 'int32'],
+  ['10_ClusterTE:ClusterID94:DCAPS:VOL.4', 'float64'],
+  ['11_NumCatTE:CAPSULE:DCAPS.4', 'float64'],
+  ['12_TruncSVD:CAPSULE:DCAPS:VOL.8', 'float64'],
+  ['12_TruncSVD:CAPSULE:DCAPS:VOL.9', 'float64'],
+  ['13_InteractionAdd:CAPSULE:GLEASON.4', 'float64'],
+  ['14_CVTE:CAPSULE:DCAPS.4', 'float64'],
+]
+outputs = [
+  ['xgb.22', 'float64'],
+]
+interim = [
+  ['6_RACE', 'float64'],
+  ['9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.0', 'float64'],
+  ['9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.0', 'float64'],
+]
+
+[[transforms]]
+  name = 'AsType'
+  inputs = ['RACE']
+  outputs = ['6_RACE']
+  type = 'float64'
+
+[[transforms]]
+  name = 'AsType'
+  inputs = ['9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.4']
+  outputs = ['9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.0']
+  type = 'float64'
+
+[[transforms]]
+  name = 'AsType'
+  inputs = ['9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.4']
+  outputs = ['9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.0']
+  type = 'float64'
+
+[[transforms]]
+  name = 'XGBoost'
+  inputs = [
+    '0_CVTE:CAPSULE.4',
+    '1_CVTE:DCAPS.4',
+    '2_CVTE:DPROS.4',
+    '3_CVTE:GLEASON.4',
+    '4_CVTE:RACE.4',
+    'PSA',
+    '6_RACE',
+    'VOL',
+    '8_CVTE:DCAPS.4',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.0',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.4',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.0',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.4',
+    '11_NumCatTE:CAPSULE:DCAPS.4',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.8',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.9',
+    '13_InteractionAdd:CAPSULE:GLEASON.4',
+    '14_CVTE:CAPSULE:DCAPS.4',
+  ]
+  outputs = ['xgb.22']
+  num_tree_limit = 312
+  filename = 'xgb_109985920213728410690617232460125535507.model'
+

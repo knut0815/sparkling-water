@@ -2,8 +2,8 @@ package org.apache.spark.ml.h2o.models
 
 import java.io._
 
-import ai.h2o.mojos.runtime.MojoModel2
-import ai.h2o.mojos.runtime.readers.Mojo2ReaderBackendFactory
+import ai.h2o.mojos.runtime.MojoPipeline
+import ai.h2o.mojos.runtime.readers.MojoReaderBackendFactory
 import org.apache.spark.annotation.Since
 import org.apache.spark.h2o.utils.H2OSchemaUtils
 import org.apache.spark.ml.param.ParamMap
@@ -19,12 +19,12 @@ import scala.reflect.ClassTag
 class H2OMojoPipelineModel(val mojoData: Array[Byte], override val uid: String)
   extends SparkModel[H2OMojoPipelineModel] with MLWritable {
 
-  @transient private var model: MojoModel2 = _
+  @transient private var model: MojoPipeline = _
 
   def getOrCreateModel() = {
     if (model == null) {
-      val reader = Mojo2ReaderBackendFactory.createReaderBackend(new ByteArrayInputStream(mojoData))
-      model = MojoModel2.loadFrom(reader)
+      val reader = MojoReaderBackendFactory.createReaderBackend(new ByteArrayInputStream(mojoData))
+      model = MojoPipeline.loadFrom(reader)
     }
     model
   }
@@ -38,20 +38,25 @@ class H2OMojoPipelineModel(val mojoData: Array[Byte], override val uid: String)
     udf[Mojo2Prediction, Row] {
     r: Row =>
       val m = getOrCreateModel()
-      val inputFrame = m.getInputFrame
+      val builder = m.getInputFrameBuilder
+      val data = r.getValuesMap[Any](names).values.toArray.map(_.toString).zip(r.getValuesMap[Any](names).keys)
+      val rowBuilder = builder.getMojoRowBuilder
 
-      val data = Array(r.getValuesMap[Any](names).values.toArray.map(_.toString))
-      inputFrame.fillFromCsvData(r.getValuesMap[Any](names).keys.toArray, data)
-      m.transform()
-      val output = getOrCreateModel().getOutputFrame.getNames.zipWithIndex.map { case (_, i) =>
-        val predictedRows = m.getOutputFrame.getColumnData(i).asInstanceOf[Array[_]]
+      data.foreach{
+        case (colData, colName) =>
+          rowBuilder.setValue(colName, colData)
+      }
+      builder.addRow(rowBuilder)
+      val output = m.transform(builder.toMojoFrame)
+      val predictions = output.getColumnNames.zipWithIndex.map { case (_, i) =>
+        val predictedRows =output.getColumnData(i).asInstanceOf[Array[_]]
         if (predictedRows.length != 1) {
           throw new RuntimeException("Invalid state, we predict on each row by row, independently at this moment.")
         }
         predictedRows(0).toString
       }
 
-      Mojo2Prediction(output.toList)
+      Mojo2Prediction(predictions.toList)
   }
 
   def defaultFileName: String = H2OMojoPipelineModel.defaultFileName

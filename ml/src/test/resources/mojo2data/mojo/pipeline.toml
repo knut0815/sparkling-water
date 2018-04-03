@@ -1,0 +1,1848 @@
+mojo_version = 2.0
+uuid = 'b448504b-1877-435f-9b09-d911a3388bd7'
+time_created = 2018-04-03T12:20:26.738856
+
+[columns]
+features = [
+  ['ID', 'int32'],
+  ['CAPSULE', 'int32'],
+  ['RACE', 'int32'],
+  ['DPROS', 'int32'],
+  ['DCAPS', 'int32'],
+  ['PSA', 'float64'],
+  ['VOL', 'float64'],
+  ['GLEASON', 'int32'],
+]
+outputs = [
+  ['AGE', 'float64'],
+]
+interim = [
+  ['0_CVTE:CAPSULE.0', 'float64'],
+  ['1_CVTE:DCAPS.0', 'float64'],
+  ['2_CVTE:DPROS.0', 'float64'],
+  ['3_CVTE:GLEASON.0', 'float64'],
+  ['4_CVTE:RACE.0', 'float64'],
+  ['8_CVTE:DCAPS.0', 'float64'],
+  ['9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.0', 'int32'],
+  ['9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.0', 'float64'],
+  ['9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.0', 'int32'],
+  ['10_ClusterTE:ClusterID94:DCAPS:VOL.0', 'float64'],
+  ['11_NumCatTE:CAPSULE:DCAPS.0', 'float64'],
+  ['12_TruncSVD:CAPSULE:DCAPS:VOL.0', 'float64'],
+  ['12_TruncSVD:CAPSULE:DCAPS:VOL.1', 'float64'],
+  ['13_InteractionAdd:CAPSULE:GLEASON', 'float64'],
+  ['14_CVTE:CAPSULE:DCAPS.0', 'float64'],
+  ['xgb.0', 'float64'],
+  ['0_xgb.0', 'float64'],
+  ['0_xgb.1', 'float64'],
+  ['0_xgb.2', 'float64'],
+  ['0_xgb.3', 'float64'],
+  ['xgb.1', 'float64'],
+  ['0_xgb.4', 'float64'],
+  ['0_xgb.5', 'float64'],
+  ['0_xgb.6', 'float64'],
+  ['0_xgb.7', 'float64'],
+  ['xgb.2', 'float64'],
+  ['0_xgb.8', 'float64'],
+  ['0_xgb.9', 'float64'],
+  ['0_xgb.10', 'float64'],
+  ['0_xgb.11', 'float64'],
+  ['xgb.3', 'float64'],
+  ['0_xgb.12', 'float64'],
+  ['0_xgb.13', 'float64'],
+  ['0_xgb.14', 'float64'],
+  ['0_xgb.15', 'float64'],
+  ['xgb.4', 'float64'],
+  ['0_xgb.16', 'float64'],
+  ['0_xgb.17', 'float64'],
+  ['0_xgb.18', 'float64'],
+  ['0_xgb.19', 'float64'],
+  ['0_CVTE:CAPSULE.1', 'float64'],
+  ['1_CVTE:DCAPS.1', 'float64'],
+  ['2_CVTE:DPROS.1', 'float64'],
+  ['3_CVTE:GLEASON.1', 'float64'],
+  ['4_CVTE:RACE.1', 'float64'],
+  ['8_CVTE:DCAPS.1', 'float64'],
+  ['9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.1', 'int32'],
+  ['9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.1', 'float64'],
+  ['9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.1', 'int32'],
+  ['10_ClusterTE:ClusterID94:DCAPS:VOL.1', 'float64'],
+  ['11_NumCatTE:CAPSULE:DCAPS.1', 'float64'],
+  ['12_TruncSVD:CAPSULE:DCAPS:VOL.2', 'float64'],
+  ['12_TruncSVD:CAPSULE:DCAPS:VOL.3', 'float64'],
+  ['13_InteractionAdd:CAPSULE:GLEASON.1', 'float64'],
+  ['14_CVTE:CAPSULE:DCAPS.1', 'float64'],
+  ['xgb.5', 'float64'],
+  ['1_xgb.0', 'float64'],
+  ['1_xgb.1', 'float64'],
+  ['1_xgb.2', 'float64'],
+  ['1_xgb.3', 'float64'],
+  ['xgb.6', 'float64'],
+  ['1_xgb.4', 'float64'],
+  ['1_xgb.5', 'float64'],
+  ['1_xgb.6', 'float64'],
+  ['1_xgb.7', 'float64'],
+  ['xgb.7', 'float64'],
+  ['1_xgb.8', 'float64'],
+  ['1_xgb.9', 'float64'],
+  ['1_xgb.10', 'float64'],
+  ['1_xgb.11', 'float64'],
+  ['xgb.8', 'float64'],
+  ['1_xgb.12', 'float64'],
+  ['1_xgb.13', 'float64'],
+  ['1_xgb.14', 'float64'],
+  ['1_xgb.15', 'float64'],
+  ['xgb.9', 'float64'],
+  ['1_xgb.16', 'float64'],
+  ['1_xgb.17', 'float64'],
+  ['1_xgb.18', 'float64'],
+  ['1_xgb.19', 'float64'],
+  ['0_CVTE:CAPSULE.2', 'float64'],
+  ['1_CVTE:DCAPS.2', 'float64'],
+  ['2_CVTE:DPROS.2', 'float64'],
+  ['3_CVTE:GLEASON.2', 'float64'],
+  ['4_CVTE:RACE.2', 'float64'],
+  ['8_CVTE:DCAPS.2', 'float64'],
+  ['9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.2', 'int32'],
+  ['9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.2', 'float64'],
+  ['9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.2', 'int32'],
+  ['10_ClusterTE:ClusterID94:DCAPS:VOL.2', 'float64'],
+  ['11_NumCatTE:CAPSULE:DCAPS.2', 'float64'],
+  ['12_TruncSVD:CAPSULE:DCAPS:VOL.4', 'float64'],
+  ['12_TruncSVD:CAPSULE:DCAPS:VOL.5', 'float64'],
+  ['13_InteractionAdd:CAPSULE:GLEASON.2', 'float64'],
+  ['14_CVTE:CAPSULE:DCAPS.2', 'float64'],
+  ['xgb.10', 'float64'],
+  ['2_xgb.0', 'float64'],
+  ['2_xgb.1', 'float64'],
+  ['2_xgb.2', 'float64'],
+  ['2_xgb.3', 'float64'],
+  ['xgb.11', 'float64'],
+  ['2_xgb.4', 'float64'],
+  ['2_xgb.5', 'float64'],
+  ['2_xgb.6', 'float64'],
+  ['2_xgb.7', 'float64'],
+  ['xgb.12', 'float64'],
+  ['2_xgb.8', 'float64'],
+  ['2_xgb.9', 'float64'],
+  ['2_xgb.10', 'float64'],
+  ['2_xgb.11', 'float64'],
+  ['xgb.13', 'float64'],
+  ['2_xgb.12', 'float64'],
+  ['2_xgb.13', 'float64'],
+  ['2_xgb.14', 'float64'],
+  ['2_xgb.15', 'float64'],
+  ['xgb.14', 'float64'],
+  ['2_xgb.16', 'float64'],
+  ['2_xgb.17', 'float64'],
+  ['2_xgb.18', 'float64'],
+  ['2_xgb.19', 'float64'],
+  ['0_CVTE:CAPSULE.3', 'float64'],
+  ['1_CVTE:DCAPS.3', 'float64'],
+  ['2_CVTE:DPROS.3', 'float64'],
+  ['3_CVTE:GLEASON.3', 'float64'],
+  ['4_CVTE:RACE.3', 'float64'],
+  ['8_CVTE:DCAPS.3', 'float64'],
+  ['9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.3', 'int32'],
+  ['9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.3', 'float64'],
+  ['9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.3', 'int32'],
+  ['10_ClusterTE:ClusterID94:DCAPS:VOL.3', 'float64'],
+  ['11_NumCatTE:CAPSULE:DCAPS.3', 'float64'],
+  ['12_TruncSVD:CAPSULE:DCAPS:VOL.6', 'float64'],
+  ['12_TruncSVD:CAPSULE:DCAPS:VOL.7', 'float64'],
+  ['13_InteractionAdd:CAPSULE:GLEASON.3', 'float64'],
+  ['14_CVTE:CAPSULE:DCAPS.3', 'float64'],
+  ['xgb.15', 'float64'],
+  ['3_xgb.0', 'float64'],
+  ['3_xgb.1', 'float64'],
+  ['3_xgb.2', 'float64'],
+  ['3_xgb.3', 'float64'],
+  ['xgb.16', 'float64'],
+  ['3_xgb.4', 'float64'],
+  ['3_xgb.5', 'float64'],
+  ['3_xgb.6', 'float64'],
+  ['3_xgb.7', 'float64'],
+  ['xgb.17', 'float64'],
+  ['3_xgb.8', 'float64'],
+  ['3_xgb.9', 'float64'],
+  ['3_xgb.10', 'float64'],
+  ['3_xgb.11', 'float64'],
+  ['xgb.18', 'float64'],
+  ['3_xgb.12', 'float64'],
+  ['3_xgb.13', 'float64'],
+  ['3_xgb.14', 'float64'],
+  ['3_xgb.15', 'float64'],
+  ['xgb.19', 'float64'],
+  ['3_xgb.16', 'float64'],
+  ['3_xgb.17', 'float64'],
+  ['3_xgb.18', 'float64'],
+  ['3_xgb.19', 'float64'],
+  ['0_CVTE:CAPSULE.4', 'float64'],
+  ['1_CVTE:DCAPS.4', 'float64'],
+  ['2_CVTE:DPROS.4', 'float64'],
+  ['3_CVTE:GLEASON.4', 'float64'],
+  ['4_CVTE:RACE.4', 'float64'],
+  ['8_CVTE:DCAPS.4', 'float64'],
+  ['9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.4', 'int32'],
+  ['9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.4', 'float64'],
+  ['9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.4', 'int32'],
+  ['10_ClusterTE:ClusterID94:DCAPS:VOL.4', 'float64'],
+  ['11_NumCatTE:CAPSULE:DCAPS.4', 'float64'],
+  ['12_TruncSVD:CAPSULE:DCAPS:VOL.8', 'float64'],
+  ['12_TruncSVD:CAPSULE:DCAPS:VOL.9', 'float64'],
+  ['13_InteractionAdd:CAPSULE:GLEASON.4', 'float64'],
+  ['14_CVTE:CAPSULE:DCAPS.4', 'float64'],
+  ['xgb.20', 'float64'],
+  ['4_xgb.0', 'float64'],
+  ['4_xgb.1', 'float64'],
+  ['4_xgb.2', 'float64'],
+  ['4_xgb.3', 'float64'],
+  ['xgb.21', 'float64'],
+  ['4_xgb.4', 'float64'],
+  ['4_xgb.5', 'float64'],
+  ['4_xgb.6', 'float64'],
+  ['4_xgb.7', 'float64'],
+  ['xgb.22', 'float64'],
+  ['4_xgb.8', 'float64'],
+  ['4_xgb.9', 'float64'],
+  ['4_xgb.10', 'float64'],
+  ['4_xgb.11', 'float64'],
+  ['xgb.23', 'float64'],
+  ['4_xgb.12', 'float64'],
+  ['4_xgb.13', 'float64'],
+  ['4_xgb.14', 'float64'],
+  ['4_xgb.15', 'float64'],
+  ['xgb.24', 'float64'],
+  ['4_xgb.16', 'float64'],
+  ['4_xgb.17', 'float64'],
+  ['4_xgb.18', 'float64'],
+  ['4_xgb.19', 'float64'],
+  ['StackedBaseModel_0_0_sum', 'float64'],
+  ['StackedBaseModel_0_0_mean', 'float64'],
+  ['StackedBaseModel_1_0_sum', 'float64'],
+  ['StackedBaseModel_1_0_mean', 'float64'],
+  ['StackedBaseModel_2_0_sum', 'float64'],
+  ['StackedBaseModel_2_0_mean', 'float64'],
+  ['StackedBaseModel_3_0_sum', 'float64'],
+  ['StackedBaseModel_3_0_mean', 'float64'],
+  ['StackedBaseModel_4_0_sum', 'float64'],
+  ['StackedBaseModel_4_0_mean', 'float64'],
+  ['StackedBaseModel_0_0_mean.1', 'float64'],
+  ['StackedBaseModel_1_0_mean.1', 'float64'],
+  ['StackedBaseModel_2_0_mean.1', 'float64'],
+  ['StackedBaseModel_3_0_mean.1', 'float64'],
+  ['StackedBaseModel_4_0_mean.1', 'float64'],
+]
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = ['ID', 'CAPSULE', 'RACE', 'DPROS', 'DCAPS', 'PSA', 'VOL', 'GLEASON']
+  outputs = [
+    '0_CVTE:CAPSULE.0',
+    '1_CVTE:DCAPS.0',
+    '2_CVTE:DPROS.0',
+    '3_CVTE:GLEASON.0',
+    '4_CVTE:RACE.0',
+    '8_CVTE:DCAPS.0',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.0',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.0',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.0',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.0',
+    '11_NumCatTE:CAPSULE:DCAPS.0',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.0',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.1',
+    '13_InteractionAdd:CAPSULE:GLEASON',
+    '14_CVTE:CAPSULE:DCAPS.0',
+  ]
+  filename = 'pipeline.toml'
+  pwd = 'munge_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/0'
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = [
+    '0_CVTE:CAPSULE.0',
+    '1_CVTE:DCAPS.0',
+    '2_CVTE:DPROS.0',
+    '3_CVTE:GLEASON.0',
+    '4_CVTE:RACE.0',
+    'PSA',
+    'RACE',
+    'VOL',
+    '8_CVTE:DCAPS.0',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.0',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.0',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.0',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.0',
+    '11_NumCatTE:CAPSULE:DCAPS.0',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.0',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.1',
+    '13_InteractionAdd:CAPSULE:GLEASON',
+    '14_CVTE:CAPSULE:DCAPS.0',
+  ]
+  outputs = ['xgb.0']
+  filename = 'pipeline.toml'
+  pwd = 'predict_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/0_XGBoostModel_0'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['xgb.0']
+  outputs = ['0_xgb.0']
+  op = 'divide'
+  const = 2
+  pos = 'right'
+
+[[transforms]]
+  name = 'Power'
+  inputs = ['0_xgb.0']
+  outputs = ['0_xgb.1']
+  exp = 2
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['0_xgb.1']
+  outputs = ['0_xgb.2']
+  op = 'add'
+  const = 42.625
+  pos = 'right'
+
+[[transforms]]
+  name = 'Clip'
+  inputs = ['0_xgb.2']
+  outputs = ['0_xgb.3']
+  min = 43.0
+  max = 79.0
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = [
+    '0_CVTE:CAPSULE.0',
+    '1_CVTE:DCAPS.0',
+    '2_CVTE:DPROS.0',
+    '3_CVTE:GLEASON.0',
+    '4_CVTE:RACE.0',
+    'PSA',
+    'RACE',
+    'VOL',
+    '8_CVTE:DCAPS.0',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.0',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.0',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.0',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.0',
+    '11_NumCatTE:CAPSULE:DCAPS.0',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.0',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.1',
+    '13_InteractionAdd:CAPSULE:GLEASON',
+    '14_CVTE:CAPSULE:DCAPS.0',
+  ]
+  outputs = ['xgb.1']
+  filename = 'pipeline.toml'
+  pwd = 'predict_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/1_XGBoostModel_0'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['xgb.1']
+  outputs = ['0_xgb.4']
+  op = 'divide'
+  const = 2
+  pos = 'right'
+
+[[transforms]]
+  name = 'Power'
+  inputs = ['0_xgb.4']
+  outputs = ['0_xgb.5']
+  exp = 2
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['0_xgb.5']
+  outputs = ['0_xgb.6']
+  op = 'add'
+  const = 42.625
+  pos = 'right'
+
+[[transforms]]
+  name = 'Clip'
+  inputs = ['0_xgb.6']
+  outputs = ['0_xgb.7']
+  min = 43.0
+  max = 79.0
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = [
+    '0_CVTE:CAPSULE.0',
+    '1_CVTE:DCAPS.0',
+    '2_CVTE:DPROS.0',
+    '3_CVTE:GLEASON.0',
+    '4_CVTE:RACE.0',
+    'PSA',
+    'RACE',
+    'VOL',
+    '8_CVTE:DCAPS.0',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.0',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.0',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.0',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.0',
+    '11_NumCatTE:CAPSULE:DCAPS.0',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.0',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.1',
+    '13_InteractionAdd:CAPSULE:GLEASON',
+    '14_CVTE:CAPSULE:DCAPS.0',
+  ]
+  outputs = ['xgb.2']
+  filename = 'pipeline.toml'
+  pwd = 'predict_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/2_XGBoostModel_0'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['xgb.2']
+  outputs = ['0_xgb.8']
+  op = 'divide'
+  const = 2
+  pos = 'right'
+
+[[transforms]]
+  name = 'Power'
+  inputs = ['0_xgb.8']
+  outputs = ['0_xgb.9']
+  exp = 2
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['0_xgb.9']
+  outputs = ['0_xgb.10']
+  op = 'add'
+  const = 42.625
+  pos = 'right'
+
+[[transforms]]
+  name = 'Clip'
+  inputs = ['0_xgb.10']
+  outputs = ['0_xgb.11']
+  min = 43.0
+  max = 79.0
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = [
+    '0_CVTE:CAPSULE.0',
+    '1_CVTE:DCAPS.0',
+    '2_CVTE:DPROS.0',
+    '3_CVTE:GLEASON.0',
+    '4_CVTE:RACE.0',
+    'PSA',
+    'RACE',
+    'VOL',
+    '8_CVTE:DCAPS.0',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.0',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.0',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.0',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.0',
+    '11_NumCatTE:CAPSULE:DCAPS.0',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.0',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.1',
+    '13_InteractionAdd:CAPSULE:GLEASON',
+    '14_CVTE:CAPSULE:DCAPS.0',
+  ]
+  outputs = ['xgb.3']
+  filename = 'pipeline.toml'
+  pwd = 'predict_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/3_XGBoostModel_0'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['xgb.3']
+  outputs = ['0_xgb.12']
+  op = 'divide'
+  const = 2
+  pos = 'right'
+
+[[transforms]]
+  name = 'Power'
+  inputs = ['0_xgb.12']
+  outputs = ['0_xgb.13']
+  exp = 2
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['0_xgb.13']
+  outputs = ['0_xgb.14']
+  op = 'add'
+  const = 42.625
+  pos = 'right'
+
+[[transforms]]
+  name = 'Clip'
+  inputs = ['0_xgb.14']
+  outputs = ['0_xgb.15']
+  min = 43.0
+  max = 79.0
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = [
+    '0_CVTE:CAPSULE.0',
+    '1_CVTE:DCAPS.0',
+    '2_CVTE:DPROS.0',
+    '3_CVTE:GLEASON.0',
+    '4_CVTE:RACE.0',
+    'PSA',
+    'RACE',
+    'VOL',
+    '8_CVTE:DCAPS.0',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.0',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.0',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.0',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.0',
+    '11_NumCatTE:CAPSULE:DCAPS.0',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.0',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.1',
+    '13_InteractionAdd:CAPSULE:GLEASON',
+    '14_CVTE:CAPSULE:DCAPS.0',
+  ]
+  outputs = ['xgb.4']
+  filename = 'pipeline.toml'
+  pwd = 'predict_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/4_XGBoostModel_0'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['xgb.4']
+  outputs = ['0_xgb.16']
+  op = 'divide'
+  const = 2
+  pos = 'right'
+
+[[transforms]]
+  name = 'Power'
+  inputs = ['0_xgb.16']
+  outputs = ['0_xgb.17']
+  exp = 2
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['0_xgb.17']
+  outputs = ['0_xgb.18']
+  op = 'add'
+  const = 42.625
+  pos = 'right'
+
+[[transforms]]
+  name = 'Clip'
+  inputs = ['0_xgb.18']
+  outputs = ['0_xgb.19']
+  min = 43.0
+  max = 79.0
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = ['ID', 'CAPSULE', 'RACE', 'DPROS', 'DCAPS', 'PSA', 'VOL', 'GLEASON']
+  outputs = [
+    '0_CVTE:CAPSULE.1',
+    '1_CVTE:DCAPS.1',
+    '2_CVTE:DPROS.1',
+    '3_CVTE:GLEASON.1',
+    '4_CVTE:RACE.1',
+    '8_CVTE:DCAPS.1',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.1',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.1',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.1',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.1',
+    '11_NumCatTE:CAPSULE:DCAPS.1',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.2',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.3',
+    '13_InteractionAdd:CAPSULE:GLEASON.1',
+    '14_CVTE:CAPSULE:DCAPS.1',
+  ]
+  filename = 'pipeline.toml'
+  pwd = 'munge_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/1'
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = [
+    '0_CVTE:CAPSULE.1',
+    '1_CVTE:DCAPS.1',
+    '2_CVTE:DPROS.1',
+    '3_CVTE:GLEASON.1',
+    '4_CVTE:RACE.1',
+    'PSA',
+    'RACE',
+    'VOL',
+    '8_CVTE:DCAPS.1',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.1',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.1',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.1',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.1',
+    '11_NumCatTE:CAPSULE:DCAPS.1',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.2',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.3',
+    '13_InteractionAdd:CAPSULE:GLEASON.1',
+    '14_CVTE:CAPSULE:DCAPS.1',
+  ]
+  outputs = ['xgb.5']
+  filename = 'pipeline.toml'
+  pwd = 'predict_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/0_XGBoostModel_1'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['xgb.5']
+  outputs = ['1_xgb.0']
+  op = 'divide'
+  const = 2
+  pos = 'right'
+
+[[transforms]]
+  name = 'Power'
+  inputs = ['1_xgb.0']
+  outputs = ['1_xgb.1']
+  exp = 2
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['1_xgb.1']
+  outputs = ['1_xgb.2']
+  op = 'add'
+  const = 42.625
+  pos = 'right'
+
+[[transforms]]
+  name = 'Clip'
+  inputs = ['1_xgb.2']
+  outputs = ['1_xgb.3']
+  min = 43.0
+  max = 79.0
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = [
+    '0_CVTE:CAPSULE.1',
+    '1_CVTE:DCAPS.1',
+    '2_CVTE:DPROS.1',
+    '3_CVTE:GLEASON.1',
+    '4_CVTE:RACE.1',
+    'PSA',
+    'RACE',
+    'VOL',
+    '8_CVTE:DCAPS.1',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.1',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.1',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.1',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.1',
+    '11_NumCatTE:CAPSULE:DCAPS.1',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.2',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.3',
+    '13_InteractionAdd:CAPSULE:GLEASON.1',
+    '14_CVTE:CAPSULE:DCAPS.1',
+  ]
+  outputs = ['xgb.6']
+  filename = 'pipeline.toml'
+  pwd = 'predict_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/1_XGBoostModel_1'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['xgb.6']
+  outputs = ['1_xgb.4']
+  op = 'divide'
+  const = 2
+  pos = 'right'
+
+[[transforms]]
+  name = 'Power'
+  inputs = ['1_xgb.4']
+  outputs = ['1_xgb.5']
+  exp = 2
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['1_xgb.5']
+  outputs = ['1_xgb.6']
+  op = 'add'
+  const = 42.625
+  pos = 'right'
+
+[[transforms]]
+  name = 'Clip'
+  inputs = ['1_xgb.6']
+  outputs = ['1_xgb.7']
+  min = 43.0
+  max = 79.0
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = [
+    '0_CVTE:CAPSULE.1',
+    '1_CVTE:DCAPS.1',
+    '2_CVTE:DPROS.1',
+    '3_CVTE:GLEASON.1',
+    '4_CVTE:RACE.1',
+    'PSA',
+    'RACE',
+    'VOL',
+    '8_CVTE:DCAPS.1',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.1',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.1',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.1',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.1',
+    '11_NumCatTE:CAPSULE:DCAPS.1',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.2',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.3',
+    '13_InteractionAdd:CAPSULE:GLEASON.1',
+    '14_CVTE:CAPSULE:DCAPS.1',
+  ]
+  outputs = ['xgb.7']
+  filename = 'pipeline.toml'
+  pwd = 'predict_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/2_XGBoostModel_1'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['xgb.7']
+  outputs = ['1_xgb.8']
+  op = 'divide'
+  const = 2
+  pos = 'right'
+
+[[transforms]]
+  name = 'Power'
+  inputs = ['1_xgb.8']
+  outputs = ['1_xgb.9']
+  exp = 2
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['1_xgb.9']
+  outputs = ['1_xgb.10']
+  op = 'add'
+  const = 42.625
+  pos = 'right'
+
+[[transforms]]
+  name = 'Clip'
+  inputs = ['1_xgb.10']
+  outputs = ['1_xgb.11']
+  min = 43.0
+  max = 79.0
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = [
+    '0_CVTE:CAPSULE.1',
+    '1_CVTE:DCAPS.1',
+    '2_CVTE:DPROS.1',
+    '3_CVTE:GLEASON.1',
+    '4_CVTE:RACE.1',
+    'PSA',
+    'RACE',
+    'VOL',
+    '8_CVTE:DCAPS.1',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.1',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.1',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.1',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.1',
+    '11_NumCatTE:CAPSULE:DCAPS.1',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.2',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.3',
+    '13_InteractionAdd:CAPSULE:GLEASON.1',
+    '14_CVTE:CAPSULE:DCAPS.1',
+  ]
+  outputs = ['xgb.8']
+  filename = 'pipeline.toml'
+  pwd = 'predict_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/3_XGBoostModel_1'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['xgb.8']
+  outputs = ['1_xgb.12']
+  op = 'divide'
+  const = 2
+  pos = 'right'
+
+[[transforms]]
+  name = 'Power'
+  inputs = ['1_xgb.12']
+  outputs = ['1_xgb.13']
+  exp = 2
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['1_xgb.13']
+  outputs = ['1_xgb.14']
+  op = 'add'
+  const = 42.625
+  pos = 'right'
+
+[[transforms]]
+  name = 'Clip'
+  inputs = ['1_xgb.14']
+  outputs = ['1_xgb.15']
+  min = 43.0
+  max = 79.0
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = [
+    '0_CVTE:CAPSULE.1',
+    '1_CVTE:DCAPS.1',
+    '2_CVTE:DPROS.1',
+    '3_CVTE:GLEASON.1',
+    '4_CVTE:RACE.1',
+    'PSA',
+    'RACE',
+    'VOL',
+    '8_CVTE:DCAPS.1',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.1',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.1',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.1',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.1',
+    '11_NumCatTE:CAPSULE:DCAPS.1',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.2',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.3',
+    '13_InteractionAdd:CAPSULE:GLEASON.1',
+    '14_CVTE:CAPSULE:DCAPS.1',
+  ]
+  outputs = ['xgb.9']
+  filename = 'pipeline.toml'
+  pwd = 'predict_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/4_XGBoostModel_1'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['xgb.9']
+  outputs = ['1_xgb.16']
+  op = 'divide'
+  const = 2
+  pos = 'right'
+
+[[transforms]]
+  name = 'Power'
+  inputs = ['1_xgb.16']
+  outputs = ['1_xgb.17']
+  exp = 2
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['1_xgb.17']
+  outputs = ['1_xgb.18']
+  op = 'add'
+  const = 42.625
+  pos = 'right'
+
+[[transforms]]
+  name = 'Clip'
+  inputs = ['1_xgb.18']
+  outputs = ['1_xgb.19']
+  min = 43.0
+  max = 79.0
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = ['ID', 'CAPSULE', 'RACE', 'DPROS', 'DCAPS', 'PSA', 'VOL', 'GLEASON']
+  outputs = [
+    '0_CVTE:CAPSULE.2',
+    '1_CVTE:DCAPS.2',
+    '2_CVTE:DPROS.2',
+    '3_CVTE:GLEASON.2',
+    '4_CVTE:RACE.2',
+    '8_CVTE:DCAPS.2',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.2',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.2',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.2',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.2',
+    '11_NumCatTE:CAPSULE:DCAPS.2',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.4',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.5',
+    '13_InteractionAdd:CAPSULE:GLEASON.2',
+    '14_CVTE:CAPSULE:DCAPS.2',
+  ]
+  filename = 'pipeline.toml'
+  pwd = 'munge_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/2'
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = [
+    '0_CVTE:CAPSULE.2',
+    '1_CVTE:DCAPS.2',
+    '2_CVTE:DPROS.2',
+    '3_CVTE:GLEASON.2',
+    '4_CVTE:RACE.2',
+    'PSA',
+    'RACE',
+    'VOL',
+    '8_CVTE:DCAPS.2',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.2',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.2',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.2',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.2',
+    '11_NumCatTE:CAPSULE:DCAPS.2',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.4',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.5',
+    '13_InteractionAdd:CAPSULE:GLEASON.2',
+    '14_CVTE:CAPSULE:DCAPS.2',
+  ]
+  outputs = ['xgb.10']
+  filename = 'pipeline.toml'
+  pwd = 'predict_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/0_XGBoostModel_2'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['xgb.10']
+  outputs = ['2_xgb.0']
+  op = 'divide'
+  const = 2
+  pos = 'right'
+
+[[transforms]]
+  name = 'Power'
+  inputs = ['2_xgb.0']
+  outputs = ['2_xgb.1']
+  exp = 2
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['2_xgb.1']
+  outputs = ['2_xgb.2']
+  op = 'add'
+  const = 46.625
+  pos = 'right'
+
+[[transforms]]
+  name = 'Clip'
+  inputs = ['2_xgb.2']
+  outputs = ['2_xgb.3']
+  min = 47.0
+  max = 79.0
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = [
+    '0_CVTE:CAPSULE.2',
+    '1_CVTE:DCAPS.2',
+    '2_CVTE:DPROS.2',
+    '3_CVTE:GLEASON.2',
+    '4_CVTE:RACE.2',
+    'PSA',
+    'RACE',
+    'VOL',
+    '8_CVTE:DCAPS.2',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.2',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.2',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.2',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.2',
+    '11_NumCatTE:CAPSULE:DCAPS.2',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.4',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.5',
+    '13_InteractionAdd:CAPSULE:GLEASON.2',
+    '14_CVTE:CAPSULE:DCAPS.2',
+  ]
+  outputs = ['xgb.11']
+  filename = 'pipeline.toml'
+  pwd = 'predict_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/1_XGBoostModel_2'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['xgb.11']
+  outputs = ['2_xgb.4']
+  op = 'divide'
+  const = 2
+  pos = 'right'
+
+[[transforms]]
+  name = 'Power'
+  inputs = ['2_xgb.4']
+  outputs = ['2_xgb.5']
+  exp = 2
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['2_xgb.5']
+  outputs = ['2_xgb.6']
+  op = 'add'
+  const = 46.625
+  pos = 'right'
+
+[[transforms]]
+  name = 'Clip'
+  inputs = ['2_xgb.6']
+  outputs = ['2_xgb.7']
+  min = 47.0
+  max = 79.0
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = [
+    '0_CVTE:CAPSULE.2',
+    '1_CVTE:DCAPS.2',
+    '2_CVTE:DPROS.2',
+    '3_CVTE:GLEASON.2',
+    '4_CVTE:RACE.2',
+    'PSA',
+    'RACE',
+    'VOL',
+    '8_CVTE:DCAPS.2',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.2',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.2',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.2',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.2',
+    '11_NumCatTE:CAPSULE:DCAPS.2',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.4',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.5',
+    '13_InteractionAdd:CAPSULE:GLEASON.2',
+    '14_CVTE:CAPSULE:DCAPS.2',
+  ]
+  outputs = ['xgb.12']
+  filename = 'pipeline.toml'
+  pwd = 'predict_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/2_XGBoostModel_2'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['xgb.12']
+  outputs = ['2_xgb.8']
+  op = 'divide'
+  const = 2
+  pos = 'right'
+
+[[transforms]]
+  name = 'Power'
+  inputs = ['2_xgb.8']
+  outputs = ['2_xgb.9']
+  exp = 2
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['2_xgb.9']
+  outputs = ['2_xgb.10']
+  op = 'add'
+  const = 46.625
+  pos = 'right'
+
+[[transforms]]
+  name = 'Clip'
+  inputs = ['2_xgb.10']
+  outputs = ['2_xgb.11']
+  min = 47.0
+  max = 79.0
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = [
+    '0_CVTE:CAPSULE.2',
+    '1_CVTE:DCAPS.2',
+    '2_CVTE:DPROS.2',
+    '3_CVTE:GLEASON.2',
+    '4_CVTE:RACE.2',
+    'PSA',
+    'RACE',
+    'VOL',
+    '8_CVTE:DCAPS.2',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.2',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.2',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.2',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.2',
+    '11_NumCatTE:CAPSULE:DCAPS.2',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.4',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.5',
+    '13_InteractionAdd:CAPSULE:GLEASON.2',
+    '14_CVTE:CAPSULE:DCAPS.2',
+  ]
+  outputs = ['xgb.13']
+  filename = 'pipeline.toml'
+  pwd = 'predict_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/3_XGBoostModel_2'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['xgb.13']
+  outputs = ['2_xgb.12']
+  op = 'divide'
+  const = 2
+  pos = 'right'
+
+[[transforms]]
+  name = 'Power'
+  inputs = ['2_xgb.12']
+  outputs = ['2_xgb.13']
+  exp = 2
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['2_xgb.13']
+  outputs = ['2_xgb.14']
+  op = 'add'
+  const = 46.625
+  pos = 'right'
+
+[[transforms]]
+  name = 'Clip'
+  inputs = ['2_xgb.14']
+  outputs = ['2_xgb.15']
+  min = 47.0
+  max = 79.0
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = [
+    '0_CVTE:CAPSULE.2',
+    '1_CVTE:DCAPS.2',
+    '2_CVTE:DPROS.2',
+    '3_CVTE:GLEASON.2',
+    '4_CVTE:RACE.2',
+    'PSA',
+    'RACE',
+    'VOL',
+    '8_CVTE:DCAPS.2',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.2',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.2',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.2',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.2',
+    '11_NumCatTE:CAPSULE:DCAPS.2',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.4',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.5',
+    '13_InteractionAdd:CAPSULE:GLEASON.2',
+    '14_CVTE:CAPSULE:DCAPS.2',
+  ]
+  outputs = ['xgb.14']
+  filename = 'pipeline.toml'
+  pwd = 'predict_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/4_XGBoostModel_2'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['xgb.14']
+  outputs = ['2_xgb.16']
+  op = 'divide'
+  const = 2
+  pos = 'right'
+
+[[transforms]]
+  name = 'Power'
+  inputs = ['2_xgb.16']
+  outputs = ['2_xgb.17']
+  exp = 2
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['2_xgb.17']
+  outputs = ['2_xgb.18']
+  op = 'add'
+  const = 46.625
+  pos = 'right'
+
+[[transforms]]
+  name = 'Clip'
+  inputs = ['2_xgb.18']
+  outputs = ['2_xgb.19']
+  min = 47.0
+  max = 79.0
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = ['ID', 'CAPSULE', 'RACE', 'DPROS', 'DCAPS', 'PSA', 'VOL', 'GLEASON']
+  outputs = [
+    '0_CVTE:CAPSULE.3',
+    '1_CVTE:DCAPS.3',
+    '2_CVTE:DPROS.3',
+    '3_CVTE:GLEASON.3',
+    '4_CVTE:RACE.3',
+    '8_CVTE:DCAPS.3',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.3',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.3',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.3',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.3',
+    '11_NumCatTE:CAPSULE:DCAPS.3',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.6',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.7',
+    '13_InteractionAdd:CAPSULE:GLEASON.3',
+    '14_CVTE:CAPSULE:DCAPS.3',
+  ]
+  filename = 'pipeline.toml'
+  pwd = 'munge_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/3'
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = [
+    '0_CVTE:CAPSULE.3',
+    '1_CVTE:DCAPS.3',
+    '2_CVTE:DPROS.3',
+    '3_CVTE:GLEASON.3',
+    '4_CVTE:RACE.3',
+    'PSA',
+    'RACE',
+    'VOL',
+    '8_CVTE:DCAPS.3',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.3',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.3',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.3',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.3',
+    '11_NumCatTE:CAPSULE:DCAPS.3',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.6',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.7',
+    '13_InteractionAdd:CAPSULE:GLEASON.3',
+    '14_CVTE:CAPSULE:DCAPS.3',
+  ]
+  outputs = ['xgb.15']
+  filename = 'pipeline.toml'
+  pwd = 'predict_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/0_XGBoostModel_3'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['xgb.15']
+  outputs = ['3_xgb.0']
+  op = 'divide'
+  const = 2
+  pos = 'right'
+
+[[transforms]]
+  name = 'Power'
+  inputs = ['3_xgb.0']
+  outputs = ['3_xgb.1']
+  exp = 2
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['3_xgb.1']
+  outputs = ['3_xgb.2']
+  op = 'add'
+  const = 42.625
+  pos = 'right'
+
+[[transforms]]
+  name = 'Clip'
+  inputs = ['3_xgb.2']
+  outputs = ['3_xgb.3']
+  min = 43.0
+  max = 79.0
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = [
+    '0_CVTE:CAPSULE.3',
+    '1_CVTE:DCAPS.3',
+    '2_CVTE:DPROS.3',
+    '3_CVTE:GLEASON.3',
+    '4_CVTE:RACE.3',
+    'PSA',
+    'RACE',
+    'VOL',
+    '8_CVTE:DCAPS.3',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.3',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.3',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.3',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.3',
+    '11_NumCatTE:CAPSULE:DCAPS.3',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.6',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.7',
+    '13_InteractionAdd:CAPSULE:GLEASON.3',
+    '14_CVTE:CAPSULE:DCAPS.3',
+  ]
+  outputs = ['xgb.16']
+  filename = 'pipeline.toml'
+  pwd = 'predict_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/1_XGBoostModel_3'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['xgb.16']
+  outputs = ['3_xgb.4']
+  op = 'divide'
+  const = 2
+  pos = 'right'
+
+[[transforms]]
+  name = 'Power'
+  inputs = ['3_xgb.4']
+  outputs = ['3_xgb.5']
+  exp = 2
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['3_xgb.5']
+  outputs = ['3_xgb.6']
+  op = 'add'
+  const = 42.625
+  pos = 'right'
+
+[[transforms]]
+  name = 'Clip'
+  inputs = ['3_xgb.6']
+  outputs = ['3_xgb.7']
+  min = 43.0
+  max = 79.0
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = [
+    '0_CVTE:CAPSULE.3',
+    '1_CVTE:DCAPS.3',
+    '2_CVTE:DPROS.3',
+    '3_CVTE:GLEASON.3',
+    '4_CVTE:RACE.3',
+    'PSA',
+    'RACE',
+    'VOL',
+    '8_CVTE:DCAPS.3',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.3',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.3',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.3',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.3',
+    '11_NumCatTE:CAPSULE:DCAPS.3',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.6',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.7',
+    '13_InteractionAdd:CAPSULE:GLEASON.3',
+    '14_CVTE:CAPSULE:DCAPS.3',
+  ]
+  outputs = ['xgb.17']
+  filename = 'pipeline.toml'
+  pwd = 'predict_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/2_XGBoostModel_3'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['xgb.17']
+  outputs = ['3_xgb.8']
+  op = 'divide'
+  const = 2
+  pos = 'right'
+
+[[transforms]]
+  name = 'Power'
+  inputs = ['3_xgb.8']
+  outputs = ['3_xgb.9']
+  exp = 2
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['3_xgb.9']
+  outputs = ['3_xgb.10']
+  op = 'add'
+  const = 42.625
+  pos = 'right'
+
+[[transforms]]
+  name = 'Clip'
+  inputs = ['3_xgb.10']
+  outputs = ['3_xgb.11']
+  min = 43.0
+  max = 79.0
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = [
+    '0_CVTE:CAPSULE.3',
+    '1_CVTE:DCAPS.3',
+    '2_CVTE:DPROS.3',
+    '3_CVTE:GLEASON.3',
+    '4_CVTE:RACE.3',
+    'PSA',
+    'RACE',
+    'VOL',
+    '8_CVTE:DCAPS.3',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.3',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.3',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.3',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.3',
+    '11_NumCatTE:CAPSULE:DCAPS.3',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.6',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.7',
+    '13_InteractionAdd:CAPSULE:GLEASON.3',
+    '14_CVTE:CAPSULE:DCAPS.3',
+  ]
+  outputs = ['xgb.18']
+  filename = 'pipeline.toml'
+  pwd = 'predict_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/3_XGBoostModel_3'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['xgb.18']
+  outputs = ['3_xgb.12']
+  op = 'divide'
+  const = 2
+  pos = 'right'
+
+[[transforms]]
+  name = 'Power'
+  inputs = ['3_xgb.12']
+  outputs = ['3_xgb.13']
+  exp = 2
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['3_xgb.13']
+  outputs = ['3_xgb.14']
+  op = 'add'
+  const = 42.625
+  pos = 'right'
+
+[[transforms]]
+  name = 'Clip'
+  inputs = ['3_xgb.14']
+  outputs = ['3_xgb.15']
+  min = 43.0
+  max = 79.0
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = [
+    '0_CVTE:CAPSULE.3',
+    '1_CVTE:DCAPS.3',
+    '2_CVTE:DPROS.3',
+    '3_CVTE:GLEASON.3',
+    '4_CVTE:RACE.3',
+    'PSA',
+    'RACE',
+    'VOL',
+    '8_CVTE:DCAPS.3',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.3',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.3',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.3',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.3',
+    '11_NumCatTE:CAPSULE:DCAPS.3',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.6',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.7',
+    '13_InteractionAdd:CAPSULE:GLEASON.3',
+    '14_CVTE:CAPSULE:DCAPS.3',
+  ]
+  outputs = ['xgb.19']
+  filename = 'pipeline.toml'
+  pwd = 'predict_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/4_XGBoostModel_3'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['xgb.19']
+  outputs = ['3_xgb.16']
+  op = 'divide'
+  const = 2
+  pos = 'right'
+
+[[transforms]]
+  name = 'Power'
+  inputs = ['3_xgb.16']
+  outputs = ['3_xgb.17']
+  exp = 2
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['3_xgb.17']
+  outputs = ['3_xgb.18']
+  op = 'add'
+  const = 42.625
+  pos = 'right'
+
+[[transforms]]
+  name = 'Clip'
+  inputs = ['3_xgb.18']
+  outputs = ['3_xgb.19']
+  min = 43.0
+  max = 79.0
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = ['ID', 'CAPSULE', 'RACE', 'DPROS', 'DCAPS', 'PSA', 'VOL', 'GLEASON']
+  outputs = [
+    '0_CVTE:CAPSULE.4',
+    '1_CVTE:DCAPS.4',
+    '2_CVTE:DPROS.4',
+    '3_CVTE:GLEASON.4',
+    '4_CVTE:RACE.4',
+    '8_CVTE:DCAPS.4',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.4',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.4',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.4',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.4',
+    '11_NumCatTE:CAPSULE:DCAPS.4',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.8',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.9',
+    '13_InteractionAdd:CAPSULE:GLEASON.4',
+    '14_CVTE:CAPSULE:DCAPS.4',
+  ]
+  filename = 'pipeline.toml'
+  pwd = 'munge_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/4'
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = [
+    '0_CVTE:CAPSULE.4',
+    '1_CVTE:DCAPS.4',
+    '2_CVTE:DPROS.4',
+    '3_CVTE:GLEASON.4',
+    '4_CVTE:RACE.4',
+    'PSA',
+    'RACE',
+    'VOL',
+    '8_CVTE:DCAPS.4',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.4',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.4',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.4',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.4',
+    '11_NumCatTE:CAPSULE:DCAPS.4',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.8',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.9',
+    '13_InteractionAdd:CAPSULE:GLEASON.4',
+    '14_CVTE:CAPSULE:DCAPS.4',
+  ]
+  outputs = ['xgb.20']
+  filename = 'pipeline.toml'
+  pwd = 'predict_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/0_XGBoostModel_4'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['xgb.20']
+  outputs = ['4_xgb.0']
+  op = 'divide'
+  const = 2
+  pos = 'right'
+
+[[transforms]]
+  name = 'Power'
+  inputs = ['4_xgb.0']
+  outputs = ['4_xgb.1']
+  exp = 2
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['4_xgb.1']
+  outputs = ['4_xgb.2']
+  op = 'add'
+  const = 42.625
+  pos = 'right'
+
+[[transforms]]
+  name = 'Clip'
+  inputs = ['4_xgb.2']
+  outputs = ['4_xgb.3']
+  min = 43.0
+  max = 79.0
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = [
+    '0_CVTE:CAPSULE.4',
+    '1_CVTE:DCAPS.4',
+    '2_CVTE:DPROS.4',
+    '3_CVTE:GLEASON.4',
+    '4_CVTE:RACE.4',
+    'PSA',
+    'RACE',
+    'VOL',
+    '8_CVTE:DCAPS.4',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.4',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.4',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.4',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.4',
+    '11_NumCatTE:CAPSULE:DCAPS.4',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.8',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.9',
+    '13_InteractionAdd:CAPSULE:GLEASON.4',
+    '14_CVTE:CAPSULE:DCAPS.4',
+  ]
+  outputs = ['xgb.21']
+  filename = 'pipeline.toml'
+  pwd = 'predict_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/1_XGBoostModel_4'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['xgb.21']
+  outputs = ['4_xgb.4']
+  op = 'divide'
+  const = 2
+  pos = 'right'
+
+[[transforms]]
+  name = 'Power'
+  inputs = ['4_xgb.4']
+  outputs = ['4_xgb.5']
+  exp = 2
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['4_xgb.5']
+  outputs = ['4_xgb.6']
+  op = 'add'
+  const = 42.625
+  pos = 'right'
+
+[[transforms]]
+  name = 'Clip'
+  inputs = ['4_xgb.6']
+  outputs = ['4_xgb.7']
+  min = 43.0
+  max = 79.0
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = [
+    '0_CVTE:CAPSULE.4',
+    '1_CVTE:DCAPS.4',
+    '2_CVTE:DPROS.4',
+    '3_CVTE:GLEASON.4',
+    '4_CVTE:RACE.4',
+    'PSA',
+    'RACE',
+    'VOL',
+    '8_CVTE:DCAPS.4',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.4',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.4',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.4',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.4',
+    '11_NumCatTE:CAPSULE:DCAPS.4',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.8',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.9',
+    '13_InteractionAdd:CAPSULE:GLEASON.4',
+    '14_CVTE:CAPSULE:DCAPS.4',
+  ]
+  outputs = ['xgb.22']
+  filename = 'pipeline.toml'
+  pwd = 'predict_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/2_XGBoostModel_4'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['xgb.22']
+  outputs = ['4_xgb.8']
+  op = 'divide'
+  const = 2
+  pos = 'right'
+
+[[transforms]]
+  name = 'Power'
+  inputs = ['4_xgb.8']
+  outputs = ['4_xgb.9']
+  exp = 2
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['4_xgb.9']
+  outputs = ['4_xgb.10']
+  op = 'add'
+  const = 42.625
+  pos = 'right'
+
+[[transforms]]
+  name = 'Clip'
+  inputs = ['4_xgb.10']
+  outputs = ['4_xgb.11']
+  min = 43.0
+  max = 79.0
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = [
+    '0_CVTE:CAPSULE.4',
+    '1_CVTE:DCAPS.4',
+    '2_CVTE:DPROS.4',
+    '3_CVTE:GLEASON.4',
+    '4_CVTE:RACE.4',
+    'PSA',
+    'RACE',
+    'VOL',
+    '8_CVTE:DCAPS.4',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.4',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.4',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.4',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.4',
+    '11_NumCatTE:CAPSULE:DCAPS.4',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.8',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.9',
+    '13_InteractionAdd:CAPSULE:GLEASON.4',
+    '14_CVTE:CAPSULE:DCAPS.4',
+  ]
+  outputs = ['xgb.23']
+  filename = 'pipeline.toml'
+  pwd = 'predict_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/3_XGBoostModel_4'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['xgb.23']
+  outputs = ['4_xgb.12']
+  op = 'divide'
+  const = 2
+  pos = 'right'
+
+[[transforms]]
+  name = 'Power'
+  inputs = ['4_xgb.12']
+  outputs = ['4_xgb.13']
+  exp = 2
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['4_xgb.13']
+  outputs = ['4_xgb.14']
+  op = 'add'
+  const = 42.625
+  pos = 'right'
+
+[[transforms]]
+  name = 'Clip'
+  inputs = ['4_xgb.14']
+  outputs = ['4_xgb.15']
+  min = 43.0
+  max = 79.0
+
+[[transforms]]
+  name = 'ExecPipe'
+  inputs = [
+    '0_CVTE:CAPSULE.4',
+    '1_CVTE:DCAPS.4',
+    '2_CVTE:DPROS.4',
+    '3_CVTE:GLEASON.4',
+    '4_CVTE:RACE.4',
+    'PSA',
+    'RACE',
+    'VOL',
+    '8_CVTE:DCAPS.4',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.4',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.4',
+    '9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.4',
+    '10_ClusterTE:ClusterID94:DCAPS:VOL.4',
+    '11_NumCatTE:CAPSULE:DCAPS.4',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.8',
+    '12_TruncSVD:CAPSULE:DCAPS:VOL.9',
+    '13_InteractionAdd:CAPSULE:GLEASON.4',
+    '14_CVTE:CAPSULE:DCAPS.4',
+  ]
+  outputs = ['xgb.24']
+  filename = 'pipeline.toml'
+  pwd = 'predict_baf0d35c-d9f4-4bc4-83b6-1955f7c415c9/4_XGBoostModel_4'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['xgb.24']
+  outputs = ['4_xgb.16']
+  op = 'divide'
+  const = 2
+  pos = 'right'
+
+[[transforms]]
+  name = 'Power'
+  inputs = ['4_xgb.16']
+  outputs = ['4_xgb.17']
+  exp = 2
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['4_xgb.17']
+  outputs = ['4_xgb.18']
+  op = 'add'
+  const = 42.625
+  pos = 'right'
+
+[[transforms]]
+  name = 'Clip'
+  inputs = ['4_xgb.18']
+  outputs = ['4_xgb.19']
+  min = 43.0
+  max = 79.0
+
+[[transforms]]
+  name = 'Agg'
+  inputs = ['0_xgb.3', '1_xgb.3', '2_xgb.3', '3_xgb.3', '4_xgb.3']
+  outputs = ['StackedBaseModel_0_0_sum']
+  op = 'sum'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['StackedBaseModel_0_0_sum']
+  outputs = ['StackedBaseModel_0_0_mean']
+  op = 'divide'
+  const = 5
+  pos = 'right'
+
+[[transforms]]
+  name = 'Agg'
+  inputs = ['0_xgb.7', '1_xgb.7', '2_xgb.7', '3_xgb.7', '4_xgb.7']
+  outputs = ['StackedBaseModel_1_0_sum']
+  op = 'sum'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['StackedBaseModel_1_0_sum']
+  outputs = ['StackedBaseModel_1_0_mean']
+  op = 'divide'
+  const = 5
+  pos = 'right'
+
+[[transforms]]
+  name = 'Agg'
+  inputs = ['0_xgb.11', '1_xgb.11', '2_xgb.11', '3_xgb.11', '4_xgb.11']
+  outputs = ['StackedBaseModel_2_0_sum']
+  op = 'sum'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['StackedBaseModel_2_0_sum']
+  outputs = ['StackedBaseModel_2_0_mean']
+  op = 'divide'
+  const = 5
+  pos = 'right'
+
+[[transforms]]
+  name = 'Agg'
+  inputs = ['0_xgb.15', '1_xgb.15', '2_xgb.15', '3_xgb.15', '4_xgb.15']
+  outputs = ['StackedBaseModel_3_0_sum']
+  op = 'sum'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['StackedBaseModel_3_0_sum']
+  outputs = ['StackedBaseModel_3_0_mean']
+  op = 'divide'
+  const = 5
+  pos = 'right'
+
+[[transforms]]
+  name = 'Agg'
+  inputs = ['0_xgb.19', '1_xgb.19', '2_xgb.19', '3_xgb.19', '4_xgb.19']
+  outputs = ['StackedBaseModel_4_0_sum']
+  op = 'sum'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['StackedBaseModel_4_0_sum']
+  outputs = ['StackedBaseModel_4_0_mean']
+  op = 'divide'
+  const = 5
+  pos = 'right'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['StackedBaseModel_0_0_mean']
+  outputs = ['StackedBaseModel_0_0_mean.1']
+  op = 'multiply'
+  const = 0.8666666666666667
+  pos = 'left'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['StackedBaseModel_1_0_mean']
+  outputs = ['StackedBaseModel_1_0_mean.1']
+  op = 'multiply'
+  const = 0.013333333333333334
+  pos = 'left'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['StackedBaseModel_2_0_mean']
+  outputs = ['StackedBaseModel_2_0_mean.1']
+  op = 'multiply'
+  const = 0.060000000000000005
+  pos = 'left'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['StackedBaseModel_3_0_mean']
+  outputs = ['StackedBaseModel_3_0_mean.1']
+  op = 'multiply'
+  const = 0.013333333333333334
+  pos = 'left'
+
+[[transforms]]
+  name = 'ConstBinaryOp'
+  inputs = ['StackedBaseModel_4_0_mean']
+  outputs = ['StackedBaseModel_4_0_mean.1']
+  op = 'multiply'
+  const = 0.046666666666666676
+  pos = 'left'
+
+[[transforms]]
+  name = 'Agg'
+  inputs = [
+    'StackedBaseModel_0_0_mean.1',
+    'StackedBaseModel_1_0_mean.1',
+    'StackedBaseModel_2_0_mean.1',
+    'StackedBaseModel_3_0_mean.1',
+    'StackedBaseModel_4_0_mean.1',
+  ]
+  outputs = ['AGE']
+  op = 'sum'
+

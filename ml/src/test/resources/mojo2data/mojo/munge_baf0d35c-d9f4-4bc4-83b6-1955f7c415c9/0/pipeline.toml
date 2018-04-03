@@ -1,0 +1,721 @@
+mojo_version = 2.0
+uuid = '32af4f0e-3f0c-4a18-bc39-cf26d9baca6e'
+time_created = 2018-04-03T12:20:26.743993
+
+[columns]
+features = [
+  ['ID', 'int32'],
+  ['CAPSULE', 'int32'],
+  ['RACE', 'int32'],
+  ['DPROS', 'int32'],
+  ['DCAPS', 'int32'],
+  ['PSA', 'float64'],
+  ['VOL', 'float64'],
+  ['GLEASON', 'int32'],
+]
+outputs = [
+  ['0_CVTE:CAPSULE.0', 'float64'],
+  ['1_CVTE:DCAPS.0', 'float64'],
+  ['2_CVTE:DPROS.0', 'float64'],
+  ['3_CVTE:GLEASON.0', 'float64'],
+  ['4_CVTE:RACE.0', 'float64'],
+  ['8_CVTE:DCAPS.0', 'float64'],
+  ['9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.0', 'int32'],
+  ['9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.0', 'float64'],
+  ['9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.0', 'int32'],
+  ['10_ClusterTE:ClusterID94:DCAPS:VOL.0', 'float64'],
+  ['11_NumCatTE:CAPSULE:DCAPS.0', 'float64'],
+  ['12_TruncSVD:CAPSULE:DCAPS:VOL.0', 'float64'],
+  ['12_TruncSVD:CAPSULE:DCAPS:VOL.1', 'float64'],
+  ['13_InteractionAdd:CAPSULE:GLEASON', 'float64'],
+  ['14_CVTE:CAPSULE:DCAPS.0', 'float64'],
+]
+interim = [
+  ['CAPSULE.1', 'float64'],
+  ['CAPSULE.2', 'float64'],
+  ['CVTE:CAPSULE.0', 'float64'],
+  ['DCAPS.1', 'float64'],
+  ['DCAPS.2', 'float64'],
+  ['CVTE:DCAPS.0', 'float64'],
+  ['DPROS.1', 'float64'],
+  ['DPROS.2', 'float64'],
+  ['CVTE:DPROS.0', 'float64'],
+  ['GLEASON.1', 'float64'],
+  ['GLEASON.2', 'float64'],
+  ['CVTE:GLEASON.0', 'float64'],
+  ['RACE.1', 'float64'],
+  ['RACE.2', 'float64'],
+  ['CVTE:RACE.0', 'float64'],
+  ['DCAPS.3', 'float64'],
+  ['DCAPS.4', 'float64'],
+  ['DCAPS.5', 'float64'],
+  ['CVTE:DCAPS.1', 'float64'],
+  ['CAPSULE.3', 'str'],
+  ['CAPSULE.4', 'str'],
+  ['DCAPS.6', 'str'],
+  ['DCAPS.7', 'str'],
+  ['CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.0', 'int32'],
+  ['CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.0', 'float64'],
+  ['CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.0', 'int32'],
+  ['DCAPS.8', 'float64'],
+  ['DCAPS.9', 'float64'],
+  ['VOL.1', 'float64'],
+  ['DCAPS.10', 'float64'],
+  ['VOL.2', 'float64'],
+  ['ClusterID94:DCAPS:VOL', 'int32'],
+  ['ClusterID94:DCAPS:VOL.1', 'float64'],
+  ['ClusterID94:DCAPS:VOL.2', 'float64'],
+  ['CVTE:ClusterID94:DCAPS:VOL.0', 'float64'],
+  ['DCAPS.11', 'float64'],
+  ['DCAPS.12', 'int64'],
+  ['CAPSULE.5', 'float64'],
+  ['CAPSULE.6', 'float64'],
+  ['DCAPS.13', 'float64'],
+  ['DCAPS.14', 'float64'],
+  ['CVTE:CAPSULE:DCAPS.0', 'float64'],
+  ['CAPSULE.7', 'float64'],
+  ['DCAPS.15', 'float64'],
+  ['CAPSULE.8', 'float64'],
+  ['DCAPS.16', 'float64'],
+  ['VOL.3', 'float64'],
+  ['CAPSULE.9', 'float64'],
+  ['GLEASON.3', 'float64'],
+  ['CAPSULE.10', 'float64'],
+  ['CAPSULE.11', 'float64'],
+  ['DCAPS.17', 'float64'],
+  ['DCAPS.18', 'float64'],
+  ['CAPSULE.12', 'float64'],
+  ['DCAPS.19', 'float64'],
+  ['CVTE:CAPSULE:DCAPS.1', 'float64'],
+]
+
+[[transforms]]
+  name = 'AsType'
+  inputs = ['CAPSULE']
+  outputs = ['CAPSULE.1']
+  type = 'float64'
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['CAPSULE.1']
+  outputs = ['CAPSULE.2']
+  repl = 1.7976931348623157e+308
+
+[[transforms]]
+  name = 'Map'
+  inputs = ['CAPSULE.2']
+  outputs = ['CVTE:CAPSULE.0']
+  map = [[[0.0], [9.659353667396596]], [[1.0], [9.600766680788617]]]
+  missing = [None]
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['CVTE:CAPSULE.0']
+  outputs = ['0_CVTE:CAPSULE.0']
+  repl = 9.636805386366552
+
+[[transforms]]
+  name = 'AsType'
+  inputs = ['DCAPS']
+  outputs = ['DCAPS.1']
+  type = 'float64'
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['DCAPS.1']
+  outputs = ['DCAPS.2']
+  repl = 1.7976931348623157e+308
+
+[[transforms]]
+  name = 'Map'
+  inputs = ['DCAPS.2']
+  outputs = ['CVTE:DCAPS.0']
+  map = [[[1.0], [9.61651387958674]], [[2.0], [9.822134481240154]]]
+  missing = [None]
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['CVTE:DCAPS.0']
+  outputs = ['1_CVTE:DCAPS.0']
+  repl = 9.636805386366552
+
+[[transforms]]
+  name = 'AsType'
+  inputs = ['DPROS']
+  outputs = ['DPROS.1']
+  type = 'float64'
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['DPROS.1']
+  outputs = ['DPROS.2']
+  repl = 1.7976931348623157e+308
+
+[[transforms]]
+  name = 'Map'
+  inputs = ['DPROS.2']
+  outputs = ['CVTE:DPROS.0']
+  map = [[[1.0], [9.995541560098664]], [[2.0], [9.487109915438923]], [[3.0], [9.438792275973233]], [[4.0], [9.772048449303192]]]
+  missing = [None]
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['CVTE:DPROS.0']
+  outputs = ['2_CVTE:DPROS.0']
+  repl = 9.636805386366552
+
+[[transforms]]
+  name = 'AsType'
+  inputs = ['GLEASON']
+  outputs = ['GLEASON.1']
+  type = 'float64'
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['GLEASON.1']
+  outputs = ['GLEASON.2']
+  repl = 1.7976931348623157e+308
+
+[[transforms]]
+  name = 'Map'
+  inputs = ['GLEASON.2']
+  outputs = ['CVTE:GLEASON.0']
+  map = [
+    [[0.0], [9.63667368904397]],
+    [[4.0], [9.636883681940906]],
+    [[5.0], [9.77287547892973]],
+    [[6.0], [9.3763354481089]],
+    [[7.0], [9.78362318543196]],
+    [[8.0], [10.061345863875035]],
+    [[9.0], [9.559723950664667]],
+  ]
+  missing = [None]
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['CVTE:GLEASON.0']
+  outputs = ['3_CVTE:GLEASON.0']
+  repl = 9.636805386366552
+
+[[transforms]]
+  name = 'AsType'
+  inputs = ['RACE']
+  outputs = ['RACE.1']
+  type = 'float64'
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['RACE.1']
+  outputs = ['RACE.2']
+  repl = 1.7976931348623157e+308
+
+[[transforms]]
+  name = 'Map'
+  inputs = ['RACE.2']
+  outputs = ['CVTE:RACE.0']
+  map = [[[0.0], [9.635031375381223]], [[1.0], [9.662959069668792]], [[2.0], [9.592937730906439]]]
+  missing = [None]
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['CVTE:RACE.0']
+  outputs = ['4_CVTE:RACE.0']
+  repl = 9.636805386366552
+
+[[transforms]]
+  name = 'AsType'
+  inputs = ['DCAPS']
+  outputs = ['DCAPS.3']
+  type = 'float64'
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['DCAPS.3']
+  outputs = ['DCAPS.4']
+  repl = 1.7976931348623157e+308
+
+[[transforms]]
+  name = 'Map'
+  inputs = ['DCAPS.4']
+  outputs = ['DCAPS.5']
+  map = [[[1.0], [1.0]], [[2.0], [-2147483648.0]]]
+  missing = [None]
+
+[[transforms]]
+  name = 'Map'
+  inputs = ['DCAPS.5']
+  outputs = ['CVTE:DCAPS.1']
+  map = [[[-2147483648.0], [9.821898925328053]], [[1.0], [9.61651387958674]]]
+  missing = [None]
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['CVTE:DCAPS.1']
+  outputs = ['8_CVTE:DCAPS.0']
+  repl = 9.636805386366552
+
+[[transforms]]
+  name = 'AsType'
+  inputs = ['CAPSULE']
+  outputs = ['CAPSULE.3']
+  type = 'str'
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['CAPSULE.3']
+  outputs = ['CAPSULE.4']
+  repl = '___NA___'
+
+[[transforms]]
+  name = 'AsType'
+  inputs = ['DCAPS']
+  outputs = ['DCAPS.6']
+  type = 'str'
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['DCAPS.6']
+  outputs = ['DCAPS.7']
+  repl = '___NA___'
+
+[[transforms]]
+  name = 'Map'
+  inputs = ['CAPSULE.4', 'DCAPS.7']
+  outputs = ['CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.0', 'CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.0', 'CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.0']
+  map = [[['0', '1'], [1, 0.4, 0]], [['0', '2'], [1, 4.9, 1]], [['1', '2'], [1, 7.9, 0]], [['1', '1'], [1, 1.4, 0]]]
+  missing = [None, None, None]
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.0']
+  outputs = ['9_CVCatNumEnc:CAPSULE:DCAPS:DPROS.amin.0']
+  repl = 1
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.0']
+  outputs = ['9_CVCatNumEnc:CAPSULE:DCAPS:PSA.amin.0']
+  repl = 0.4
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.0']
+  outputs = ['9_CVCatNumEnc:CAPSULE:DCAPS:RACE.amin.0']
+  repl = 0
+
+[[transforms]]
+  name = 'AsType'
+  inputs = ['DCAPS']
+  outputs = ['DCAPS.8']
+  type = 'float64'
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['DCAPS.8']
+  outputs = ['DCAPS.9']
+  repl = 1.0986842105263157
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['VOL']
+  outputs = ['VOL.1']
+  repl = 15.645032894736843
+
+[[transforms]]
+  name = 'Scale'
+  inputs = ['DCAPS.9']
+  outputs = ['DCAPS.10']
+  mean = 1.0986842105263157
+  scale = 0.2982375514906089
+
+[[transforms]]
+  name = 'Scale'
+  inputs = ['VOL.1']
+  outputs = ['VOL.2']
+  mean = 15.645032894736843
+  scale = 18.346497191819594
+
+[[transforms]]
+  name = 'KMeans'
+  inputs = ['DCAPS.10', 'VOL.2']
+  outputs = ['ClusterID94:DCAPS:VOL']
+  k = 94
+  centroids = [
+    [-0.3308912980041789, 0.25372511475044573],
+    [3.022140521771503, 0.5753123876948808],
+    [-0.3308912980041784, -0.8527531294482033],
+    [-0.3308912980041789, 2.104214592117153],
+    [3.0221405217715036, -0.8527531294482037],
+    [-0.3308912980041789, 1.1762445375613886],
+    [-0.3308912980041789, 4.40892338155227],
+    [3.022140521771503, 1.2511907240526767],
+    [-0.3308912980041789, 0.7361060241670984],
+    [-0.3308912980041789, 1.5455248382730071],
+    [-0.3308912980041789, -0.21775453117656504],
+    [-0.3308912980041789, 3.1643624664848247],
+    [3.022140521771503, -0.02970773598024287],
+    [-0.3308912980041789, 0.04387579257483972],
+    [3.022140521771503, 1.709043790617635],
+    [-0.3308912980041789, 0.5426085972259553],
+    [-0.3308912980041789, -0.6020240691864409],
+    [-0.3308912980041789, 0.3899909083709691],
+    [-0.3308912980041789, 0.9187021876185997],
+    [-0.3308912980041789, 1.801704530279591],
+    [3.022140521771503, 0.3572871179020434],
+    [-0.3308912980041789, -0.12781910738701963],
+    [3.022140521771503, 0.7715351305084345],
+    [-0.3308912980041789, 0.18286690206777356],
+    [-0.3308912980041789, -0.4821101708003803],
+    [-0.3308912980041789, 0.32458332743311796],
+    [-0.3308912980041789, 1.3274995684801698],
+    [-0.3308912980041789, 2.7228612951543285],
+    [-0.3308912980041789, 0.5924429446071754],
+    [-0.3308912980041789, -0.37673129040050907],
+    [-0.3308912980041789, 1.0440667177494811],
+    [-0.3308912980041789, -0.07876342168363129],
+    [-0.3308912980041789, 0.8178655003394124],
+    [-0.3308912980041789, 0.46084912105364123],
+    [-0.3308912980041789, -0.30768995496611046],
+    [-0.3308912980041789, -0.03025279915472495],
+    [-0.3308912980041789, 0.12290995287474323],
+    [-0.3308912980041789, 0.27552764172972943],
+    [3.022140521771503, 0.8478439749359274],
+    [-0.3308912980041789, 1.2325028437847192],
+    [-0.3308912980041789, 1.142178089156258],
+    [-0.3308912980041789, 0.7061275495705833],
+    [-0.3308912980041789, 1.4583147303558721],
+    [-0.3308912980041789, 0.7606338670187927],
+    [-0.3308912980041789, 0.07930489891617591],
+    [-0.3308912980041789, 0.97865913681163],
+    [-0.3308912980041789, 1.5891298922315744],
+    [-0.3308912980041789, -0.5311658565037688],
+    [-0.3308912980041789, -0.6510797548898294],
+    [-0.3308912980041789, 0.8914490288944951],
+    [-0.3308912980041789, 0.5099048067570296],
+    [-0.3308912980041789, 0.3027808004538341],
+    [-0.3308912980041788, -0.1485315080173392],
+    [-0.3308912980041789, 0.6309088314920543],
+    [-0.3308912980041789, 0.02479858146796657],
+    [3.022140521771503, 0.727930076549867],
+    [-0.3308912980041789, 1.4910185208247977],
+    [-0.3308912980041789, 0.778802639501529],
+    [-0.3308912980041789, 0.23737321951598292],
+    [-0.3308912980041789, 0.14471247985402708],
+    [-0.3308912980041789, -0.05968621057675799],
+    [-0.3308912980041789, 0.6788743908464786],
+    [-0.3308912980041789, 0.3409352226675806],
+    [-0.3308912980041789, 0.41361031259852643],
+    [-0.3308912980041789, 0.4390465940743574],
+    [-0.3308912980041789, 0.2918795369641923],
+    [-0.3308912980041789, 0.057502371936892054],
+    [-0.3308912980041789, 0.5753123876948808],
+    [-0.3308912980041789, 0.16651500683331075],
+    [-0.3308912980041789, 3.9138243313977026],
+    [-0.3308912980041789, 0.37831098320349577],
+    [-0.3308912980041789, -0.06786215819398937],
+    [-0.3308912980041789, 0.7497326035291506],
+    [-0.3308912980041789, 0.40089217186061094],
+    [-0.3308912980041789, 2.4067246539547145],
+    [-0.3308912980041789, 0.06840363542653388],
+    [-0.3308912980041789, 0.0356998449576084],
+    [-0.3308912980041789, 0.2809782734745504],
+    [-0.3308912980041789, 0.5807630194397017],
+    [-0.3308912980041789, 0.727930076549867],
+    [-0.3308912980041789, 0.12836058461956423],
+    [-0.3308912980041789, 0.3082314321986551],
+    [-0.3308912980041789, 0.16106437508848992],
+    [-0.3308912980041789, 0.18831753381259458],
+    [-0.3308912980041789, 0.722479444805046],
+    [-0.3308912980041789, 0.33003395917793876],
+    [-0.3308912980041789, 0.019347949723145557],
+    [-0.3308912980041789, 0.09020616240581768],
+    [-0.3308912980041789, -0.0842140534284522],
+    [-0.3308912980041789, 0.3354845909227598],
+    [-0.3308912980041789, 3.1698130982296453],
+    [-0.3308912980041789, 1.7253956858520978],
+    [-0.3308912980041789, 1.7253956858520978],
+    [-0.3308912980041789, 1.7253956858520978],
+  ]
+  output = 'labels'
+
+[[transforms]]
+  name = 'AsType'
+  inputs = ['ClusterID94:DCAPS:VOL']
+  outputs = ['ClusterID94:DCAPS:VOL.1']
+  type = 'float64'
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['ClusterID94:DCAPS:VOL.1']
+  outputs = ['ClusterID94:DCAPS:VOL.2']
+  repl = 1.7976931348623157e+308
+
+[[transforms]]
+  name = 'Map'
+  inputs = ['ClusterID94:DCAPS:VOL.2']
+  outputs = ['CVTE:ClusterID94:DCAPS:VOL.0']
+  map = [
+    [[0.0], [9.636805369974002]],
+    [[1.0], [9.636805381008474]],
+    [[2.0], [9.502619925868249]],
+    [[3.0], [9.636805384624708]],
+    [[4.0], [9.63181000343276]],
+    [[5.0], [9.63680539749916]],
+    [[6.0], [9.636805382355234]],
+    [[7.0], [9.636805393106359]],
+    [[8.0], [9.636805383757581]],
+    [[9.0], [9.636805387763411]],
+    [[10.0], [9.636805365915267]],
+    [[11.0], [9.636805391002413]],
+    [[12.0], [9.636805407382658]],
+    [[13.0], [9.63680535213797]],
+    [[14.0], [9.636805388820102]],
+    [[15.0], [9.636805394475166]],
+    [[16.0], [9.636805385378436]],
+    [[17.0], [9.636805376311708]],
+    [[18.0], [9.63680539902087]],
+    [[19.0], [9.636805392063657]],
+    [[20.0], [9.636805394941065]],
+    [[21.0], [9.636805396132234]],
+    [[22.0], [9.63680539902087]],
+    [[23.0], [9.636805392063657]],
+    [[24.0], [9.636805385378436]],
+    [[25.0], [9.636805404591447]],
+    [[26.0], [9.636805408710813]],
+    [[27.0], [9.636805398941538]],
+    [[28.0], [9.636805344716114]],
+    [[29.0], [9.636805337540586]],
+    [[30.0], [9.636805441079597]],
+    [[31.0], [9.636805394131459]],
+    [[32.0], [9.63680537389677]],
+    [[33.0], [9.636805479190716]],
+    [[34.0], [9.636805388820102]],
+    [[35.0], [9.636805395917547]],
+    [[36.0], [9.636805389855379]],
+    [[37.0], [9.636805393006194]],
+    [[38.0], [9.636805389921603]],
+    [[39.0], [9.636805390047792]],
+    [[40.0], [9.636805386549955]],
+    [[41.0], [9.636805376311708]],
+    [[42.0], [9.636805391944348]],
+    [[43.0], [9.63680535692674]],
+    [[44.0], [9.636805403220945]],
+    [[45.0], [9.636805370654377]],
+    [[46.0], [9.636805395139818]],
+    [[47.0], [9.636805395139818]],
+    [[48.0], [9.636805397109436]],
+    [[49.0], [9.636805429011469]],
+    [[50.0], [9.636805370166421]],
+    [[51.0], [9.636805358459343]],
+    [[52.0], [9.636805396002064]],
+    [[53.0], [9.636805349607616]],
+    [[54.0], [9.636805392916614]],
+    [[55.0], [9.636805385378436]],
+    [[56.0], [9.636805370166421]],
+    [[57.0], [9.636805403749339]],
+    [[58.0], [9.636805438276767]],
+    [[59.0], [9.636805348707636]],
+    [[60.0], [9.636805393006194]],
+    [[61.0], [9.636805386549955]],
+    [[62.0], [9.636805394131459]],
+    [[63.0], [9.636805398296499]],
+    [[64.0], [9.63680540508623]],
+    [[65.0], [9.636805122980935]],
+    [[66.0], [9.636805388820102]],
+    [[67.0], [9.636805385378436]],
+    [[68.0], [9.636805395001424]],
+    [[69.0], [9.636805414240582]],
+    [[70.0], [9.63680539255565]],
+    [[71.0], [9.636805397109436]],
+    [[72.0], [9.636805391002413]],
+    [[73.0], [9.636805377718085]],
+    [[74.0], [9.636805421519956]],
+    [[75.0], [9.636805368466984]],
+    [[76.0], [9.636805402974211]],
+    [[77.0], [9.636805389950545]],
+    [[78.0], [9.636805455667794]],
+    [[79.0], [9.636805370166421]],
+    [[80.0], [9.636805400254875]],
+    [[81.0], [9.63680538197776]],
+    [[82.0], [9.636805382954055]],
+    [[83.0], [9.636805384180429]],
+    [[84.0], [9.636805385378436]],
+    [[85.0], [9.636805394475166]],
+    [[86.0], [9.636805385378436]],
+    [[87.0], [9.63680538660912]],
+    [[88.0], [9.6368053812795]],
+    [[89.0], [9.636805391002413]],
+    [[90.0], [9.636805391002413]],
+    [[91.0], [9.636805394131459]],
+  ]
+  missing = [None]
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['CVTE:ClusterID94:DCAPS:VOL.0']
+  outputs = ['10_ClusterTE:ClusterID94:DCAPS:VOL.0']
+  repl = 9.636805386366552
+
+[[transforms]]
+  name = 'AsType'
+  inputs = ['DCAPS']
+  outputs = ['DCAPS.11']
+  type = 'float64'
+
+[[transforms]]
+  name = 'IntervalMap'
+  inputs = ['DCAPS.11']
+  outputs = ['DCAPS.12']
+  breakpoints = [0.999, 2.0]
+  values = [[-1], [0], [-1], [-1]]
+
+[[transforms]]
+  name = 'AsType'
+  inputs = ['CAPSULE']
+  outputs = ['CAPSULE.5']
+  type = 'float64'
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['CAPSULE.5']
+  outputs = ['CAPSULE.6']
+  repl = 1.7976931348623157e+308
+
+[[transforms]]
+  name = 'AsType'
+  inputs = ['DCAPS.12']
+  outputs = ['DCAPS.13']
+  type = 'float64'
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['DCAPS.13']
+  outputs = ['DCAPS.14']
+  repl = 1.7976931348623157e+308
+
+[[transforms]]
+  name = 'Map'
+  inputs = ['CAPSULE.6', 'DCAPS.14']
+  outputs = ['CVTE:CAPSULE:DCAPS.0']
+  map = [[[0.0, 0.0], [9.659353667396596]], [[1.0, 0.0], [9.600766680923968]]]
+  missing = [None]
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['CVTE:CAPSULE:DCAPS.0']
+  outputs = ['11_NumCatTE:CAPSULE:DCAPS.0']
+  repl = 9.636805386366552
+
+[[transforms]]
+  name = 'AsType'
+  inputs = ['CAPSULE']
+  outputs = ['CAPSULE.7']
+  type = 'float64'
+
+[[transforms]]
+  name = 'AsType'
+  inputs = ['DCAPS']
+  outputs = ['DCAPS.15']
+  type = 'float64'
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['CAPSULE.7']
+  outputs = ['CAPSULE.8']
+  repl = 0.3848684210526316
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['DCAPS.15']
+  outputs = ['DCAPS.16']
+  repl = 1.0986842105263157
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['VOL']
+  outputs = ['VOL.3']
+  repl = 15.645032894736843
+
+[[transforms]]
+  name = 'MatrixProduct'
+  inputs = ['CAPSULE.8', 'DCAPS.16', 'VOL.3']
+  outputs = ['12_TruncSVD:CAPSULE:DCAPS:VOL.0', '12_TruncSVD:CAPSULE:DCAPS:VOL.1']
+  matrix = [
+    [0.008785092862316213, 0.02893393623342666, 0.9995427201863065],
+    [0.44469706656315006, 0.8951844469464556, -0.029821551523985912],
+  ]
+
+[[transforms]]
+  name = 'AsType'
+  inputs = ['CAPSULE']
+  outputs = ['CAPSULE.9']
+  type = 'float64'
+
+[[transforms]]
+  name = 'AsType'
+  inputs = ['GLEASON']
+  outputs = ['GLEASON.3']
+  type = 'float64'
+
+[[transforms]]
+  name = 'BinaryOp'
+  inputs = ['CAPSULE.9', 'GLEASON.3']
+  outputs = ['13_InteractionAdd:CAPSULE:GLEASON']
+  op = 'add'
+
+[[transforms]]
+  name = 'AsType'
+  inputs = ['CAPSULE']
+  outputs = ['CAPSULE.10']
+  type = 'float64'
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['CAPSULE.10']
+  outputs = ['CAPSULE.11']
+  repl = 1.7976931348623157e+308
+
+[[transforms]]
+  name = 'AsType'
+  inputs = ['DCAPS']
+  outputs = ['DCAPS.17']
+  type = 'float64'
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['DCAPS.17']
+  outputs = ['DCAPS.18']
+  repl = 1.7976931348623157e+308
+
+[[transforms]]
+  name = 'Map'
+  inputs = ['CAPSULE.11']
+  outputs = ['CAPSULE.12']
+  map = [[[0.0], [0.0]], [[1.0], [1.0]]]
+  missing = [None]
+
+[[transforms]]
+  name = 'Map'
+  inputs = ['DCAPS.18']
+  outputs = ['DCAPS.19']
+  map = [[[1.0], [1.0]], [[2.0], [2.0]]]
+  missing = [None]
+
+[[transforms]]
+  name = 'Map'
+  inputs = ['CAPSULE.12', 'DCAPS.19']
+  outputs = ['CVTE:CAPSULE:DCAPS.1']
+  map = [
+    [[0.0, 1.0], [9.637711085652526]],
+    [[0.0, 2.0], [9.84019090061775]],
+    [[1.0, 1.0], [9.576573883282654]],
+    [[1.0, 2.0], [9.699544065329786]],
+  ]
+  missing = [None]
+
+[[transforms]]
+  name = 'FillNa'
+  inputs = ['CVTE:CAPSULE:DCAPS.1']
+  outputs = ['14_CVTE:CAPSULE:DCAPS.0']
+  repl = 9.636805386366552
+

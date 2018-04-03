@@ -35,16 +35,17 @@ class H2OMojoPipelineModelTest extends FunSuite with SparkTestContext {
 
   test("Prediction on Mojo Pipeline (Mojo2)") {
     // Test data
-    val df = spark.read.option("header", "true").csv("examples/smalldata/prostate/prostate.csv")
+    val df = spark.read.option("header", "true").csv("../examples/smalldata/prostate/prostate.csv")
     // Test mojo
     val mojo = H2OMojoPipelineModel.createFromMojo(
-      this.getClass.getClassLoader.getResourceAsStream("mojo2data/mojo.mojo"),
+      this.getClass.getClassLoader.getResourceAsStream("mojo2data/pipeline.mojo"),
       "prostate_pipeline.mojo")
     val rawMojo = mojo.getOrCreateModel()
-    val icolNames = rawMojo.getInputFrame.getNames
-    val icolTypes = rawMojo.getInputFrame.getTypes
-    val ocolNames = rawMojo.getOutputFrame.getNames
-    val ocolTypes = rawMojo.getOutputFrame.getTypes
+
+    val icolNames = (0 until rawMojo.getInputMeta.size()).map(i => rawMojo.getInputMeta.getColumnName(i))
+    val icolTypes = (0 until rawMojo.getInputMeta.size()).map(i => rawMojo.getInputMeta.getColumnType(i))
+    val ocolNames = (0 until rawMojo.getOutputMeta.size()).map(i => rawMojo.getOutputMeta.getColumnName(i))
+    val ocolTypes = (0 until rawMojo.getOutputMeta.size()).map(i => rawMojo.getOutputMeta.getColumnType(i))
     println("\nMOJO Inputs:")
     println(icolNames.zip(icolTypes).map { case (n,t) => s"${n}[${t}]" }.mkString(", "))
     println("\nMOJO Outputs:")
